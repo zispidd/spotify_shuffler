@@ -23,7 +23,7 @@ function Navbar({ user, logged, setLogOut }) {
           </Link>
           <div className={styles.navbar_container_wrapper_menu}>
             <nav>
-              <a target='_blank' href='https://github.com'>Github</a>
+              <a target='_blank' href='https://github.com/zispidd/spotify_shuffler'>Github</a>
             </nav>
             {
               logged ? <div className={styles.navbar_container_wrapper_menu_logged}>
