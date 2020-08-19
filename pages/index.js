@@ -112,7 +112,7 @@ class Home extends Component {
               }
             </div>
           </div>
-          <div className={styles.playlist_list}>
+          {this.props.logged ? <div className={styles.playlist_list}>
             {this.state.playlists.length > 0 ? this.state.playlists.map(r => (
               <Item
                 thumbnail={r.images[0].url}
@@ -124,7 +124,7 @@ class Home extends Component {
                 key={r.id}
               />
             )) : null}
-          </div>
+          </div> : null}
         </div>
       </Layout>
     )
@@ -132,7 +132,8 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  logged: state.logged
 })
 
 export default connect(mapStateToProps, null)(Home)
