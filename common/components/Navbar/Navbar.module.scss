@@ -1,0 +1,66 @@
+.navbar {
+  width: 100%;
+  background-color: #252525;
+  max-height: 90px;
+
+  &_container {
+    padding: 24px;
+
+    &_wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 80em;
+      width: 100%; 
+
+      &_menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-left: 50px;
+
+        nav a {
+          font-size: 18px;
+          font-weight: 400;
+          color: #fff;
+          opacity: .6;
+          transition: .2s all;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+
+        &_logged {
+          display: flex;
+          align-items: center;
+
+          &_avatar {
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+            margin-right: 16px;
+            object-fit: cover;
+          }
+
+          button {
+            margin-left: 10px;
+            cursor: pointer;
+            background: none;
+            border: 0;
+            outline: none;
+            opacity: .6;
+            transition: .2s all;
+
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}

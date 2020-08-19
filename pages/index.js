@@ -1,65 +1,138 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Layout from '../common/components/Layout'
+import styles from '../styles/Home.module.scss'
+import { Component } from 'react'
+import Item from '../common/components/PlaylistItem'
+import axios from 'axios'
+import { connect } from 'react-redux'
+import Button from '../common/components/Button'
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+class Home extends Component {
+  state = {
+    thumbnail: 'https://i.imgur.com/U7TDfAz.png',
+    name: null,
+    id: null,
+    playlists: [],
+    description: null,
+    owner: null,
+    loading: false
+  }
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+  componentDidMount() {
+    this.getPlaylists()
+  }
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+  getPlaylists = async () => {
+    let token = window.localStorage.getItem('token')
+    const { data } = await axios({
+      method: 'get',
+      url: 'https://api.spotify.com/v1/me/playlists',
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      validateStatus: false
+    })
+    if (data.error) return
+    const playlists = data.items.filter(r => r.owner.id === this.props.user.id)
+    this.setState({
+      playlists
+    })
+  }
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+  shufflePlaylist = async () => {
+    this.setState({
+      loading: true
+    })
+    let items = []
+    let token = window.localStorage.getItem('token')
+    const getTracks = await axios({
+      method: 'get',
+      url: `https://api.spotify.com/v1/playlists/${this.state.id}`,
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      validateStatus: false
+    })
+    if (getTracks.data.error) return
+    getTracks.data.tracks.items.map(r => {
+      items.push(r.track.uri)
+    })
+    let updatedArray = this.shuffle(items)
+    const updatePlaylist = await axios({
+      method: 'put',
+      url: 'https://api.spotify.com/v1/playlists/4k8c4fpT48smnlHlyJf4bN/tracks?uris=' + updatedArray.join(','),
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      validateStatus: false
+    })
+    this.setState({
+      loading: false
+    })
+  }
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+  shuffle = a => {
+    let j, x, i
+    for (i = a.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1))
+      x = a[i]
+      a[i] = a[j]
+      a[j] = x
+    }
+    return a
+  }
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+  selectPlaylist = item => {
+    this.setState({
+      id: item.id,
+      name: item.name,
+      thumbnail: item.images[0].url,
+      description: item.description,
+      owner: item.owner
+    })
+  }
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+  render() {
+    return (
+      <Layout>
+        <div className={styles.container}>
+          <div className={styles.selected_playlist}>
+            <img className={styles.selected_playlist_thumbnail} src={this.state.thumbnail} />
+            <div className={styles.selected_playlist_info}>
+              {
+                !this.state.id ?
+                  <div>
+                    <p className={styles.selected_playlist_info_subtitle}>Welcome to</p>
+                    <h1 className={styles.selected_playlist_info_title}>Spotify shuffler</h1>
+                  </div> : <div>
+                    <p className={styles.selected_playlist_info_subtitle}>Playlist</p>
+                    <h1 className={styles.selected_playlist_info_title}>{this.state.name}</h1>
+                    <p className={styles.selected_playlist_info_owner}> <span>Created by</span> {this.state.owner.display_name} </p>
+                    <Button type='green' className={styles.selected_playlist_info_button} loading={this.state.loading} onClick={this.shufflePlaylist}> Shuffle playlist </Button>
+                  </div>
+              }
+            </div>
+          </div>
+          <div className={styles.playlist_list}>
+            {this.state.playlists.length > 0 ? this.state.playlists.map(r => (
+              <Item
+                thumbnail={r.images[0].url}
+                name={r.name}
+                onClick={() => this.selectPlaylist(r)}
+                id={r.id}
+                description={r.description}
+                className={styles.playlist_list_item}
+                key={r.id}
+              />
+            )) : null}
+          </div>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+      </Layout>
+    )
+  }
 }
+
+const mapStateToProps = state => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps, null)(Home)

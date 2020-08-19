@@ -1,0 +1,43 @@
+.button_default {
+  border: 0;
+  cursor: pointer;
+  font-size: 16px;
+  color: #FFFFFF;
+  font-weight: 500;
+  padding: 10px 20px;
+  border: 2px solid #FFFFFF;
+  border-radius: 20px;
+  text-transform: uppercase;
+  background: transparent;
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
+}
+
+.button_green {
+  border: 0;
+  cursor: pointer;
+  font-size: 16px;
+  color: #FFFFFF;
+  font-weight: 500;
+  padding: 10px 20px;
+  background-color: #1DB954;
+  border-radius: 20px;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
+  // -webkit-animation-duration: .3s;
+  // animation-duration: .3s;
+  // -webkit-animation-name: Bounce;
+  // animation-name: Bounce;
+  // -webkit-animation-fill-mode: backwards;
+  // animation-fill-mode: backwards;
+  transition: .3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.loading {
+  display: inline-block;
+}

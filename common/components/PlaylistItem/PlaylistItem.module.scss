@@ -1,0 +1,36 @@
+.item {
+  display: flex;
+  cursor: pointer;
+  width: 300px;
+
+  &_margin {
+    margin-top: 10px;
+  }
+
+  &_thumbnail {
+    width: 150px;
+    height: 150px;
+  }
+
+  &_body {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &_title {
+      font-size: 18px;
+      color: #fff;
+      line-height: 22px;
+      font-weight: 900;
+      margin-top: 10px;
+    }
+
+    &_subtitle {
+      font-size: 14px;
+      color: #fff;
+      line-height: 15px;
+      margin-top: 10px;
+    }
+  }
+}

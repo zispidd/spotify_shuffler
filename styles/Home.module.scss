@@ -1,0 +1,60 @@
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80em;
+  width: 100%;
+  margin-top: 50px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.selected_playlist {
+  display: flex;
+
+  &_thumbnail {
+    width: 400px;
+    height: 400px;
+  }
+
+  &_info {
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &_title {
+      font-weight: bold;
+      font-size: 48px;
+      line-height: 59px;
+      color: #fff;
+    }
+
+    &_subtitle {
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 44px;
+    }
+
+    &_owner {
+      margin-top: 15px;
+      span {
+        opacity: .5;
+      }
+    }
+
+    &_button {
+      margin-top: 15px;
+    }
+  }
+}
+
+.playlist_list {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+
+  &_item {
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+}
