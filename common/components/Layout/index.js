@@ -15,7 +15,7 @@ function Layout({ children, ...props }) {
   return (
     <main>
       <Head>
-        <title>Create Next App</title>
+        <title>Spotify playlist shuffler</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
