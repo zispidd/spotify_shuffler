@@ -1,7 +1,14 @@
 .item {
   display: flex;
   cursor: pointer;
-  width: 300px;
+  width: 290px;
+  transition: .3s;
+  margin-right: 15px;
+  margin-top: 15px;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   &_margin {
     margin-top: 10px;

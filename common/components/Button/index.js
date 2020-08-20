@@ -4,11 +4,11 @@ import Link from 'next/link'
 export default function Button({ href, children, type, link, onClick, className, loading }) {
   if(link) {
     return (
-      <Link href={href}>
-        <a className={`${styles.button_default} ${className ? className : ''}`}>
+      // <Link href={href}>
+        <a href={href} className={`${styles.button_default} ${className ? className : ''}`}>
           { children }
         </a>
-      </Link>
+      // </Link>
     )
   }
   return (

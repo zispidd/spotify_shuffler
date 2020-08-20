@@ -5,6 +5,7 @@ import Item from '../common/components/PlaylistItem'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import Button from '../common/components/Button'
+import { SPOTIFY_API } from '../common/constants'
 
 class Home extends Component {
   state = {
@@ -19,6 +20,7 @@ class Home extends Component {
 
   componentDidMount() {
     this.getPlaylists()
+    console.log(this.props)
   }
 
   getPlaylists = async () => {
@@ -93,7 +95,7 @@ class Home extends Component {
 
   render() {
     return (
-      <Layout>
+      <Layout link={this.props.SPOTIFY_LINK}>
         <div className={styles.container}>
           <div className={styles.selected_playlist}>
             <img className={styles.selected_playlist_thumbnail} src={this.state.thumbnail} />
@@ -120,7 +122,6 @@ class Home extends Component {
                 onClick={() => this.selectPlaylist(r)}
                 id={r.id}
                 description={r.description}
-                className={styles.playlist_list_item}
                 key={r.id}
               />
             )) : null}
@@ -128,6 +129,16 @@ class Home extends Component {
         </div>
       </Layout>
     )
+  }
+}
+
+export async function getStaticProps() {
+  console.log('try')
+
+  return {
+    props: {
+      SPOTIFY_LINK: SPOTIFY_API
+    }
   }
 }
 

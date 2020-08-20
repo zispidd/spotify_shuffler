@@ -5,7 +5,7 @@ import { useEffect } from "react"
 import Navbar from "../Navbar"
 import Head from "next/head"
 
-function Layout({ children, ...props }) {
+function Layout({ children, link, ...props }) {
   useEffect(() => {
     function getMe() {
       props.getMe(window.localStorage.getItem('token'))
@@ -18,7 +18,7 @@ function Layout({ children, ...props }) {
         <title>Spotify playlist shuffler</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
+      <Navbar link={link} />
       {children}
     </main>
   )

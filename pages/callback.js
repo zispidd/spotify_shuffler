@@ -4,11 +4,15 @@ import Layout from '../common/components/Layout'
 
 function Callback({ router }) {
   useEffect(() => {
-    const token = router.asPath.substring(10).split('access_token=')[1].split('&')[0]
-    if(token) {
-      window.localStorage.setItem('token', token)
+    try {
+      const token = router.asPath.substring(10).split('access_token=')[1].split('&')[0]
+      if(token) {
+        window.localStorage.setItem('token', token)
+      }
+      router.push('/')
+    } catch (error) {
+      router.push('/')
     }
-    router.push('/')
   }, [])
   return (
     <Layout>
