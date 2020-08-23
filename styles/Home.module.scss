@@ -67,15 +67,20 @@
   .selected_playlist {
     flex-direction: column;
   }
-  
+
   .selected_playlist_thumbnail_block {
     width: 100%;
     display: flex;
     justify-content: center;
   }
 
-  .selected_playlist_info_title, .selected_playlist_info_subtitle {
+  .selected_playlist_info_title, .selected_playlist_info_owner, .selected_playlist_info_subtitle {
     text-align: center;
+  }
+
+  .selected_playlist_info_button {
+    display: flex;
+    justify-content: center;
   }
 }
 

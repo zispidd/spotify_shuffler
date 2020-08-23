@@ -111,7 +111,10 @@ class Home extends Component {
                     <p className={styles.selected_playlist_info_subtitle}>Playlist</p>
                     <h1 className={styles.selected_playlist_info_title}>{this.state.name}</h1>
                     <p className={styles.selected_playlist_info_owner}> <span>Created by</span> {this.state.owner.display_name} </p>
-                    <Button type='green' className={styles.selected_playlist_info_button} loading={this.state.loading} onClick={this.shufflePlaylist}> Shuffle playlist </Button>
+                    <div className={styles.selected_playlist_info_button}>
+                      <Button type='green' className={styles.selected_playlist_info_button} loading={this.state.loading} onClick={this.shufflePlaylist}> Shuffle playlist </Button>
+                    </div>
+
                   </div>
               }
             </div>
@@ -127,10 +130,10 @@ class Home extends Component {
                 key={r.id}
               />
             )) : null}
-          </div> : 
-          <div className={styles.log_in}>
-            <p>Log in with spotify to shuffle playlists</p>
-          </div>}
+          </div> :
+            <div className={styles.log_in}>
+              <p>Log in with spotify to shuffle playlists</p>
+            </div>}
         </div>
       </Layout>
     )
