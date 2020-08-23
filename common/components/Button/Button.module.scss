@@ -41,3 +41,9 @@
 .loading {
   display: inline-block;
 }
+
+@media(max-width: 500px) {
+  .button_green, .button_default {
+    padding: 10px;
+  }
+}

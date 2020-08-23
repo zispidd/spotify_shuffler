@@ -5,20 +5,43 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { setLogOut } from '../../store/actions/actions'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 function Navbar({ user, logged, setLogOut, link }) {
+  const [mobile, setMobile] = useState(false)
   const router = useRouter()
   function logOut() {
     setLogOut()
     router.push('/')
   }
+  useEffect(() => {
+    function detectMob() {
+      const toMatch = [
+        /Android/i,
+        /webOS/i,
+        /iPhone/i,
+        /iPad/i,
+        /iPod/i,
+        /BlackBerry/i,
+        /Windows Phone/i
+      ]
+      return toMatch.some((toMatchItem) => {
+        return navigator.userAgent.match(toMatchItem);
+      })
+    }
+    setMobile(detectMob())
+  }, [])
 
   return (
     <header className={styles.navbar}>
       <div className={styles.navbar_container}>
         <div className={styles.navbar_container_wrapper}>
           <Link href='/'>
-            <a><img src='/logo.svg' /></a>
+            <a>
+              {mobile ?
+                <img src='/logo_small.svg' /> :
+                <img src='/logo.svg' />}
+            </a>
           </Link>
           <div className={styles.navbar_container_wrapper_menu}>
             <nav>

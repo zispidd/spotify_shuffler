@@ -98,7 +98,9 @@ class Home extends Component {
       <Layout link={this.props.SPOTIFY_LINK}>
         <div className={styles.container}>
           <div className={styles.selected_playlist}>
-            <img className={styles.selected_playlist_thumbnail} src={this.state.thumbnail} />
+            <div className={styles.selected_playlist_thumbnail_block}>
+              <img className={styles.selected_playlist_thumbnail} src={this.state.thumbnail} />
+            </div>
             <div className={styles.selected_playlist_info}>
               {
                 !this.state.id ?
@@ -125,7 +127,10 @@ class Home extends Component {
                 key={r.id}
               />
             )) : null}
-          </div> : null}
+          </div> : 
+          <div className={styles.log_in}>
+            <p>Log in with spotify to shuffle playlists</p>
+          </div>}
         </div>
       </Layout>
     )

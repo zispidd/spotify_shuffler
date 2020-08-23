@@ -48,8 +48,45 @@
   }
 }
 
+.log_in {
+  margin-top: 20px;
+  text-align: center;
+
+  p {
+    font-size: 18px;
+  }
+}
+
 .playlist_list {
   margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
+}
+
+@media(max-width: 700px) {
+  .selected_playlist {
+    flex-direction: column;
+  }
+  
+  .selected_playlist_thumbnail_block {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .selected_playlist_info_title, .selected_playlist_info_subtitle {
+    text-align: center;
+  }
+}
+
+@media(max-width: 500px) {
+  .selected_playlist_thumbnail {
+    width: 200px;
+    height: 200px;
+  }
+
+  .selected_playlist_info {
+    margin-top: 10px;
+    margin-left: 0px;
+  }
 }
