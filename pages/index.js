@@ -61,7 +61,7 @@ class Home extends Component {
     let updatedArray = this.shuffle(items)
     const updatePlaylist = await axios({
       method: 'put',
-      url: 'https://api.spotify.com/v1/playlists/4k8c4fpT48smnlHlyJf4bN/tracks?uris=' + updatedArray.join(','),
+      url: `https://api.spotify.com/v1/playlists/${this.state.id}/tracks?uris=` + updatedArray.join(','),
       headers: {
         Authorization: `Bearer ${token}`
       },
@@ -133,8 +133,6 @@ class Home extends Component {
 }
 
 export async function getStaticProps() {
-  console.log('try')
-
   return {
     props: {
       SPOTIFY_LINK: SPOTIFY_API
