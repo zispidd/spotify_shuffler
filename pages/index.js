@@ -34,6 +34,7 @@ class Home extends Component {
       validateStatus: false
     })
     if (data.error) return
+    console.log(data)
     const playlists = data.items.filter(r => r.owner.id === this.props.user.id)
     this.setState({
       playlists
