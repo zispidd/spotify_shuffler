@@ -28,6 +28,11 @@
           color: #fff;
           opacity: .6;
           transition: .2s all;
+          margin-right: 15px;
+
+          &:last-child {
+            margin-right: 0;
+          }
 
           &:hover {
             opacity: 1;

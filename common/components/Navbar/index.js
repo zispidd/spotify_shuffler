@@ -46,6 +46,9 @@ function Navbar({ user, logged, setLogOut, link }) {
           <div className={styles.navbar_container_wrapper_menu}>
             <nav>
               <a target='_blank' href='https://github.com/zispidd/spotify_shuffler'>Github</a>
+              <Link href='/favourite'>
+                <a>Create Liked tracks playlist</a>
+              </Link>
             </nav>
             {
               logged ? <div className={styles.navbar_container_wrapper_menu_logged}>

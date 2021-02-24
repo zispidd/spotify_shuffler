@@ -1,30 +1,26 @@
-.button_default {
+@mixin btn {
   border: 0;
   cursor: pointer;
   font-size: 16px;
   color: #FFFFFF;
   font-weight: 500;
   padding: 10px 20px;
-  border: 2px solid #FFFFFF;
   border-radius: 20px;
   text-transform: uppercase;
-  background: transparent;
   font-family: 'Montserrat', sans-serif;
   outline: none;
+  background: transparent;
+  min-width: 125px;
+};
+
+.button_default {
+  @include btn;
+  border: 2px solid #FFFFFF;
 }
 
 .button_green {
-  border: 0;
-  cursor: pointer;
-  font-size: 16px;
-  color: #FFFFFF;
-  font-weight: 500;
-  padding: 10px 20px;
+  @include btn;
   background-color: #1DB954;
-  border-radius: 20px;
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  outline: none;
   // -webkit-animation-duration: .3s;
   // animation-duration: .3s;
   // -webkit-animation-name: Bounce;
