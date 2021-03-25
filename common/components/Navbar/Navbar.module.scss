@@ -3,23 +3,21 @@
   min-height: 90px;
 
 
-  span {
+  span > a {
     margin-right: 15px;
 
-    a {
-      font-size: 18px;
-      font-weight: 400;
-      color: #fff;
-      opacity: .6;
-      transition: .2s all;
-  
-      &:last-child {
-        margin-right: 0;
-      }
-  
-      &:hover {
-        opacity: 1;
-      }
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    opacity: .6;
+    transition: .2s all;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      opacity: 1;
     }
   }
 
