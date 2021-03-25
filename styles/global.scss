@@ -1,3 +1,5 @@
+@import '~bootstrap/scss/bootstrap';
+
 body, h1, h2, h3, h4, h5, p {
   margin: 0;
   padding: 0;
@@ -15,4 +17,13 @@ body {
   background-color: #2F2F2F;
   color: #ffffff;
   font-family: 'Montserrat', sans-serif;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+}
+
+.alert {
+  width: 100%;
 }

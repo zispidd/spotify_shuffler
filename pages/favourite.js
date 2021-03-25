@@ -93,7 +93,7 @@ function Favourite(props) {
       })
     }))
 
-    const getPlaytlistStats = await axios({
+    const getPlaylistStats = await axios({
       method: 'get',
       url: `https://api.spotify.com/v1/playlists/${playlistId}`,
       headers: {
@@ -102,7 +102,7 @@ function Favourite(props) {
       validateStatus: false
     })
 
-    setPlaylist(getPlaytlistStats.data)
+    setPlaylist(getPlaylistStats.data)
     setLoading(false)
   }
 

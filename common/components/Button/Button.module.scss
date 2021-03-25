@@ -11,6 +11,8 @@
   outline: none;
   background: transparent;
   min-width: 125px;
+  display: flex;
+  align-items: center;
 };
 
 .button_default {
@@ -35,7 +37,7 @@
 }
 
 .loading {
-  display: inline-block;
+  margin-left: 8px;
 }
 
 @media(max-width: 500px) {

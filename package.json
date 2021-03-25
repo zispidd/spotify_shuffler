@@ -8,12 +8,15 @@
     "start": "next start"
   },
   "dependencies": {
-    "axios": "^0.19.2",
-    "next": "9.5.2",
+    "axios": "^0.21.1",
+    "bootstrap": "^5.0.0-beta3",
+    "next": "^10.0.9",
     "next-redux-wrapper": "^6.0.2",
     "react": "16.13.1",
+    "react-bootstrap": "^1.5.2",
     "react-dom": "16.13.1",
     "react-redux": "^7.2.1",
+    "react-tabs": "^3.2.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "sass": "^1.26.10"

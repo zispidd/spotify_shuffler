@@ -1,7 +1,27 @@
 .navbar {
-  width: 100%;
   background-color: #252525;
-  max-height: 90px;
+  min-height: 90px;
+
+
+  span {
+    margin-right: 15px;
+
+    a {
+      font-size: 18px;
+      font-weight: 400;
+      color: #fff;
+      opacity: .6;
+      transition: .2s all;
+  
+      &:last-child {
+        margin-right: 0;
+      }
+  
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
 
   &_container {
     padding: 24px;
@@ -22,7 +42,7 @@
         width: 100%;
         margin-left: 50px;
 
-        nav a {
+        a {
           font-size: 18px;
           font-weight: 400;
           color: #fff;

@@ -13,6 +13,13 @@ export const CREATE_PLAYLIST_BODY = {
   description: 'Your liked songs. created by https://spotify-shuffler.vercel.app/'
 }
 
+export const CREATE_COPY_PLAYLIST_BODY = {
+  name: 'Copy of playlist',
+  public: false,
+  description: 'Copy playlist. created by https://spotify-shuffler.vercel.app/'
+
+}
+
 export const SPOTIFY_API = `${SPOTIFY_ENDPOINT}?client_id=${SPOTIFY_CLIENT_ID}&redirect_uri=${SPOTIFY_URL}&scope=${SPOTIFY_SCOPE.join(
   '%20'
 )}&response_type=token&show_dialog=true`

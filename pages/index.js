@@ -97,7 +97,7 @@ class Home extends Component {
   render() {
     return (
       <Layout link={this.props.SPOTIFY_LINK}>
-        <div className={styles.container}>
+        <div className='container'>
           <div className={styles.selected_playlist}>
             <div className={styles.selected_playlist_thumbnail_block}>
               <img className={styles.selected_playlist_thumbnail} src={this.state.thumbnail} />
@@ -120,16 +120,17 @@ class Home extends Component {
               }
             </div>
           </div>
-          {this.props.logged ? <div className={styles.playlist_list}>
+          {this.props.logged ? <div className='row'>
             {this.state.playlists.length > 0 ? this.state.playlists.map(r => (
-              <Item
-                thumbnail={r.images[0].url}
-                name={r.name}
-                onClick={() => this.selectPlaylist(r)}
-                id={r.id}
-                description={r.description}
-                key={r.id}
-              />
+              <div className='col-md-6 col-lg-4 col-xxl-3 item' key={r.id}>
+                <Item
+                  thumbnail={r.images[0] && r.images[0].url}
+                  name={r.name}
+                  onClick={() => this.selectPlaylist(r)}
+                  id={r.id}
+                  description={r.description}
+                />
+              </div>
             )) : null}
           </div> :
             <div className={styles.log_in}>
